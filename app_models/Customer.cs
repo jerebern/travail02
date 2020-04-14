@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+//TEST COMMIT
 namespace app_models
 {
     public class Customer : INotifyPropertyChanged
