@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace BillingManagement.Business
 {
@@ -116,7 +117,7 @@ namespace BillingManagement.Business
 
             };
 
-            List<ContactInfo> contactInfos = new ContactInfosDataService().GetAll().ToList();
+            List<ContactInfo> contactInfos = new ContactInfosDataService().GetAll();
 
             Random rnd = new Random();
 

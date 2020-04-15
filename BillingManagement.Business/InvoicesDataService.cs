@@ -5,10 +5,11 @@ using System.Collections.Generic;
 
 namespace BillingManagement.Business
 {
-    class InvoicesDataService : IDataService<Invoice>
+    public class InvoicesDataService : IDataService<Invoice>
     {
 
         readonly List<Invoice> invoices;
+
 
         public InvoicesDataService()
         {
@@ -31,7 +32,7 @@ namespace BillingManagement.Business
                     for (int i = 0; i < nbInvoices; i++)
                     {
                         var invoice = new Invoice(customer);
-                        invoice.SubTotal = rnd.NextDouble() * 100 + 50;
+                        invoice.Subtotal = rnd.NextDouble() * 100 + 50;
                         customer.Invoices.Add(invoice);
                         invoices.Add(invoice);
                     }
