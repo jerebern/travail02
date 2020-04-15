@@ -26,9 +26,9 @@
                     <MenuItem Header="Coller"/>
                 </MenuItem>
                 <MenuItem Header="Affichage">
-                    <MenuItem Header="Fonction 1"/>
-                    <MenuItem Header="Fonction 2"/>
-                    <MenuItem Header="Fonction 3"/>
+                    <MenuItem Header="Client" Click="Switch_Customers_View_Clicked"/>
+                    <MenuItem Header="Facture" Click="Switch_Invoices_View_Clicked"/>
+
                 </MenuItem>
             </Menu>
         </StackPanel>

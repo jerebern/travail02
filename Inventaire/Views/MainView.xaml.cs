@@ -40,6 +40,19 @@ namespace Inventaire
 
         }
 
+        private void Switch_Invoices_View_Clicked(object sender, RoutedEventArgs e)
+        {
+
+            DataContext = new InvoiceViewModel();
+
+        }
+        private void Switch_Customers_View_Clicked(object sender, RoutedEventArgs e)
+        {
+
+            DataContext = _vm;
+
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();

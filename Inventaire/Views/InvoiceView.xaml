@@ -5,12 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BillingManagement.UI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding RelativeSource={RelativeSource self}}"
+             >
     <Grid>
-        
-        
-        
-        
-            
+
+        <ListView ItemsSource="{Binding Invoices}"
+            SelectedItem="{Binding SelectedInvoice}"
+            x:Name="lvCustomers" Margin="10,10,569,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Info}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+
+
+        <TextBlock Text="Identifant Facture :" Margin="260,82,432,343" />
+        <TextBlock Text="Nom du client :" Margin="260,109,439,325" />
+        <TextBlock Text="Sous-Total :" Margin="260,137,477,299" />
+        <TextBlock Text="TPS :" Margin="260,167,501,270" />
+        <TextBlock Text="TVQ :" Margin="260,195,508,243" />
+        <TextBlock Text="Total :" Margin="260,225,508,210" />
+        <TextBox HorizontalAlignment="Left" Margin="393,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="393,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="393,135,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="393,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="393,190,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="393,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+
+
+
+
     </Grid>
 </UserControl>
