@@ -16,7 +16,7 @@ namespace BillingManagement.UI.Views
     /// <summary>
     /// Logique d'interaction pour InvoiceView.xaml
     /// </summary>
-    public partial class InvoiceView : Page
+    public partial class InvoiceView : UserControl
     {
         public InvoiceView()
         {
