@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
+using System.Linq;
+using app_models;
 using BillingManagement.Business;
 using BillingManagement.Models;
 
@@ -11,10 +12,15 @@ namespace BillingManagement.UI.ViewModels
     class InvoiceViewModel : BaseViewModel
     {
 
-        readonly InvoicesDataService invoicesDataService = new InvoicesDataService();
-
         private ObservableCollection<Invoice> invoices;
         private Invoice selectedInvoice;
+
+
+        public InvoiceViewModel(IEnumerable<Customer> customerData)
+        {
+            InvoicesDataService ids = new InvoicesDataService(customerData);
+            Invoices = new ObservableCollection<Invoice>(ids.GetAll().ToList());
+        }
 
         public ObservableCollection<Invoice> Invoices
         {
@@ -45,18 +51,7 @@ namespace BillingManagement.UI.ViewModels
 
         }
 
-        public InvoiceViewModel()
-        {
 
-            InitValues();
-
-        }
-
-        private void InitValues()
-        {
-            Invoices = new ObservableCollection<Invoice>(invoicesDataService.GetAll());
-            Debug.WriteLine(invoices.Count);
-        }
 
     }
 }

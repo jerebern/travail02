@@ -1,85 +1,77 @@
 ﻿using app_models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
+using System.Runtime.CompilerServices;
+using System.Threading;
 
 namespace BillingManagement.Models
 {
     public class Invoice : INotifyPropertyChanged
     {
-        private static int invoidIdIndex;
-        private int invoiceId = 0;
-        private DateTime creationDateTime; 
-        private Customer customer;
-        private Double subTotal;
-        private Double fedTax;
-        private Double provTax;
-        private Double total;
+        static int nextId;
 
-        public Invoice() {
-            invoiceId = invoidIdIndex++;
-            creationDateTime = DateTime.Now;
-            
+        public int InvoiceId { get;
+            private set; }
 
+        public DateTime CreationDateTime { get; 
+            private set; }
+
+        private Customer _customer;
+
+        public Customer Customer
+        {
+            get { return _customer; }
+            set
+            {
+                _customer = value;
+                OnPropertyChanged();
+            }
         }
 
-        public Invoice(Customer customerTMP)
+        private double subTotal;
+
+        public double SubTotal
         {
-            customer = customerTMP;
-            invoiceId = invoidIdIndex++;
-            creationDateTime = DateTime.Now;
-            
-
-        }
-
-
-        public double Total()
-        {
-
-            total = provTax + fedTax + subTotal;
-
-            return total;
-
-        }
-
-        public Double Subtotal
-        {
-
-            get => Subtotal ;
-
+            get { return subTotal; }
             set
             {
                 subTotal = value;
-                FedTax();
-                ProvTax();
-
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ProvTax));
+                OnPropertyChanged(nameof(FedTax));
+                OnPropertyChanged(nameof(Total));
             }
+        }
 
+        public double FedTax => SubTotal * 0.05;
+        public double ProvTax => SubTotal * 0.09975;
+
+        public double Total => SubTotal + FedTax + ProvTax;
+
+        public string Info => $"{CreationDateTime} : {Total}";
+
+        public Invoice()
+        {
+            CreationDateTime = DateTime.Now;
+            InvoiceId = Interlocked.Increment(ref nextId);
 
         }
 
-        public double FedTax ()
-        {
-            
-            provTax = 0.05 * subTotal;
-
-            return provTax;
-          }
-        
-        public double ProvTax ()
+        public Invoice(Customer customer)
         {
 
-            fedTax = 0.09975 * subTotal;
-
-            return fedTax;
-        }
-
-        private void OnPropertyChanged()
-        {
-            throw new NotImplementedException();
+            Customer = customer;
+            CreationDateTime = DateTime.Now;
+            InvoiceId = Interlocked.Increment(ref nextId);
+                      
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
     }
 }

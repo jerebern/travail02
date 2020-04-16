@@ -1,5 +1,6 @@
 ﻿using app_models;
 using BillingManagement.Business;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -15,8 +16,9 @@ namespace BillingManagement.UI.ViewModels
         public ObservableCollection<Customer> Customers
         {
             get => customers;
-            private set
+            set
             {
+
                 customers = value;
                 OnPropertyChanged();
             }

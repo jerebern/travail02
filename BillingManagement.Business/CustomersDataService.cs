@@ -117,7 +117,7 @@ namespace BillingManagement.Business
 
             };
 
-            List<ContactInfo> contactInfos = new ContactInfosDataService().GetAll();
+            List<ContactInfo> contactInfos = new ContactInfosDataService().GetAll().ToList();
 
             Random rnd = new Random();
 

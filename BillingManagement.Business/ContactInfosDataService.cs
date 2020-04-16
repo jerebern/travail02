@@ -513,6 +513,8 @@ namespace BillingManagement.Business
                 new ContactInfo() {ContactType="Email", Contact="ligula.elit.pretium@necmaurisblandit.net"},
             };
         }
+
+
         public IEnumerable<ContactInfo> GetAll()
         {
             foreach (ContactInfo c in contactInfos)

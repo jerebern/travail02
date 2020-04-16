@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BillingManagement.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -15,6 +16,9 @@ namespace app_models
         private string postalCode;
         private string picturePath;
         private string contactInfo;
+        private ObservableCollection<ContactInfo> contactInfos = new ObservableCollection<ContactInfo>();
+        private ObservableCollection<Invoice> invoices = new ObservableCollection<Invoice>();
+
 
         #region Property definitions
         public string Name
@@ -88,6 +92,16 @@ namespace app_models
         public Customer()
         {
             PicturePath = "images/user.png";
+        }
+
+        public ObservableCollection<Invoice> Invoices
+        {
+            get => invoices;
+            set
+            {
+                invoices = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<ContactInfo> ContactInfos { get; set; }

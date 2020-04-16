@@ -1,5 +1,6 @@
 ﻿using app_models;
 using BillingManagement.UI.ViewModels;
+using System;
 using System.Windows;
 
 namespace Inventaire
@@ -10,6 +11,7 @@ namespace Inventaire
     public partial class CustomerView : Window
     {
         CustomerViewModel _vm;
+        InvoiceViewModel _invoice_vm;
 
         public CustomerView(CustomerViewModel vm)
         {
@@ -39,11 +41,11 @@ namespace Inventaire
             lvCustomers.SelectedIndex = currentIndex;
 
         }
-
+        //Switch d'un interface a l'autre MAIS ne fonctionne pas 
         private void Switch_Invoices_View_Clicked(object sender, RoutedEventArgs e)
         {
-
-            DataContext = new InvoiceViewModel();
+            _invoice_vm = new InvoiceViewModel(_vm.Customers);
+            DataContext = _invoice_vm;
 
         }
         private void Switch_Customers_View_Clicked(object sender, RoutedEventArgs e)
