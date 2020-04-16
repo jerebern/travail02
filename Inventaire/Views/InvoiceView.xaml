@@ -20,24 +20,22 @@
             </ListView.ItemTemplate>
         </ListView>
 
-
-
-
-
-        <TextBlock Text="Identifant Facture :" Margin="260,82,432,343" />
-        <TextBlock Text="Nom du client :" Margin="260,109,439,325" />
-        <TextBlock Text="Sous-Total :" Margin="260,137,477,299" />
-        <TextBlock Text="TPS :" Margin="260,167,501,270" />
-        <TextBlock Text="TVQ :" Margin="260,195,508,243" />
-        <TextBlock Text="Total :" Margin="260,225,508,210" />
-        <TextBox HorizontalAlignment="Left" Margin="393,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="393,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="393,135,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="393,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="393,190,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="393,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
-
-
+        <TextBlock Text="Date de la facture :" Margin="254,60,447,365" />
+        <TextBlock Text="Identifant Facture :" Margin="256,96,436,329" />
+        <TextBlock Text="Nom du client :" Margin="256,123,443,311" />
+        <TextBlock Text="Sous-Total :" Margin="256,151,481,285" />
+        <TextBlock Text="TPS :" Margin="256,181,505,256" />
+        <TextBlock Text="TVQ :" Margin="256,209,512,229" />
+        <TextBlock Text="Total :" Margin="256,239,512,196" />
+        <TextBlock Text="Total :" Margin="256,239,512,196" />
+ 
+        <TextBox HorizontalAlignment="Left" Margin="389,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding SelectedInvoice.creationDateTime}"/>
+        <TextBox HorizontalAlignment="Left" Margin="389,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding SelectedInvoice.invoiceId}"/>
+        <TextBox HorizontalAlignment="Left" Margin="389,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{Binding SelectedInvoice.customer.lastName}"/>
+        <TextBox HorizontalAlignment="Left" Margin="389,149,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{Binding SelectedInvoice.subtotal}" />
+        <TextBox HorizontalAlignment="Left" Margin="389,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{Binding SelectedInvoice.fedTax}" />
+        <TextBox HorizontalAlignment="Left" Margin="389,204,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{Binding SelectedInvoice.provTax}" />
+        <TextBox HorizontalAlignment="Left" Margin="389,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Text="{Binding SelectedInvoice.total}" />
 
 
     </Grid>
